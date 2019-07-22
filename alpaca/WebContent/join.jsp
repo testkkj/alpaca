@@ -28,7 +28,7 @@
 			href="login.jsp">login</a> <a href="join.jsp">join</a>
 	</div>
 	<div>
-	<form action="join_proc.jsp" method="post">
+	<form action="joinAction.jsp" method="post">
         <label for="id">아이디</label>
         <input type="text" name="id" id="id">
         <label for="password">비밀번호</label>

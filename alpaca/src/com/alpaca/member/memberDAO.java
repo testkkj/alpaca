@@ -11,75 +11,39 @@ public class memberDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 
-	private String memberInsert = "insert into member(id, password, email, tel, date) values(?,?,?,?,?)";
-	private String memberUpdateP = "update member set password=? where email=?";
-	private String memberUpdateE = "update member set email=? where password=?";
-	private String memberDelete = "delete member where password=?";
-
-	public void insertMember(memberVO vo) {
-		System.out.println("jdbc로 memberInsert() 기능 처리");
+	public String getDate() {
+		String SQL = "select now()";
 		try {
-			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(memberInsert);
-			stmt.setString(1, vo.getId());
-			stmt.setString(2, vo.getPassWord());
-			stmt.setString(3, vo.getEmail());
-			stmt.setString(4, vo.getTel());
-			stmt.setDate(5, vo.getDate());
-			stmt.executeQuery();
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getString(1);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JDBCUtil.close(stmt, conn);
 		}
-
+		return "";
 	}
 
-	public void updateMemberP(memberVO vo) {
-		System.out.println("jdbc로 memberUpdateP() 기능 처리");
+	public void insert(String id, String password, String email, String tel) {
+		System.out.println("jdbc로 insert() 기능 처리");
+		String sql = "insert into member(id, password, email, tel, regdate) values (?,?,?,?,?)";
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(memberUpdateP);
-			stmt.setString(1, vo.getPassWord());
-			stmt.setString(2, vo.getEmail());
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, id);
+			stmt.setString(2, password);
+			stmt.setString(3, email);
+			stmt.setString(4, tel);
+			stmt.setString(5, getDate());
 			stmt.executeUpdate();
+			System.out.println("insert() try문 실행");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(stmt, conn);
+			System.out.println("insert() finally문 실행");
 		}
 
 	}
-
-	public void updateMemberE(memberVO vo) {
-		System.out.println("jdbc로 memberUpdateE() 기능 처리");
-		try {
-			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(memberUpdateE);
-			stmt.setString(1, vo.getEmail());
-			stmt.setString(2, vo.getPassWord());
-			stmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.close(stmt, conn);
-		}
-
-	}
-
-	public void deleteMember(memberVO vo) {
-		System.out.println("jdbc로 memberDelete() 기능 처리");
-		try {
-			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(memberDelete);
-			stmt.setString(1, vo.getPassWord());
-			stmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.close(stmt, conn);
-		}
-
-	}
-
 }

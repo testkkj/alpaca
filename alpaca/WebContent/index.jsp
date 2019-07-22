@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,14 +31,14 @@
 <a href="join.jsp">join</a>
 </div>
 <div>
-±è°üÁøÀÇ Æ÷Æ®Æú¸®¿À »çÀÌÆ®.
-¿©·¯°¡Áö ¾÷·Îµå ¿¹Á¤.
+ê¹€ê´€ì§„ì˜ í¬íŠ¸í´ë¦¬ì˜¤ ì‚¬ì´íŠ¸.
+ì—¬ëŸ¬ê°€ì§€ ì—…ë¡œë“œ ì˜ˆì •.
 </div>
 <div>
-È¸¿ø°¡ÀÔÀ» ÇÏ½Ã¸é °Ô½ÃÆÇ¿¡ ±ÛÀ» ³²±â½Ç¼ö ÀÖ¾î¿ä.
-<a href="join.jsp">°¡ÀÔÇÏ·¯°¡±â~</a>
-ÀÌ¹Ì °¡ÀÔ ÇÏ¼Ì³ª¿ä?
-<a href="login.jsp">·Î±×ÀÎÇÏ±â~</a>
+íšŒì›ê°€ìž…ì„ í•˜ì‹œë©´ ê²Œì‹œíŒì— ê¸€ì„ ë‚¨ê¸°ì‹¤ìˆ˜ ìžˆì–´ìš”.
+<a href="join.jsp">ê°€ìž…í•˜ëŸ¬ê°€ê¸°~</a>
+ì´ë¯¸ ê°€ìž… í•˜ì…¨ë‚˜ìš”?
+<a href="login.jsp">ë¡œê·¸ì¸í•˜ê¸°~</a>
 </div>
 </body>
 </html>
