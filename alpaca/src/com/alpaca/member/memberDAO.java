@@ -46,4 +46,22 @@ public class memberDAO {
 		}
 
 	}
+	
+	public void login(String id, String password) {
+		System.out.println("jdbc로 login() 기능 처리");
+		String sql = "select id from member where id=? and password=?";
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, id);
+			stmt.setString(2, password);
+			stmt.executeQuery();
+			System.out.println("insert() try문 실행");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(stmt, conn);
+			System.out.println("login() finally문 실행");
+		}
+	}
 }

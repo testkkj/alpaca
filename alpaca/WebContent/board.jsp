@@ -1,5 +1,8 @@
+<%@page import="com.alpaca.board.boardVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="com.alpaca.board.boardDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,29 +25,39 @@
 <title>AAP Start!</title>
 </head>
 <body>
-<div>
-<a href="index.jsp">home</a>
-<a href="about.jsp">about</a>
-<a href="board.jsp">board</a>
-<a href="work.jsp">work</a>
-<a href="login.jsp">login</a>
-<a href="join.jsp">join</a>
-</div>
- <table style="width:100%">
-  <tr>
-    <th>±Û¹øÈ£</th>
-    <th>±ÛÁ¦¸ñ</th>
-    <th>ÀÛ¼ºÀÚ</th>
-    <th>Á¶È¸¼ö</th>
-    <th>³¯Â¥</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>½ÃÀÛ±Û</td>
-    <td>°ü¸®ÀÚ</td>
-    <td>1</td>
-    <td>2019.07.22</td>
-  </tr>
-</table> 
+	<div>
+		<a href="index.jsp">home</a> <a href="about.jsp">about</a> <a
+			href="board.jsp">board</a> <a href="work.jsp">work</a> <a
+			href="login.jsp">login</a> <a href="join.jsp">join</a>
+	</div>
+	<div>
+		<table style="width: 100%">
+			<tr>
+				<th>ê¸€ë²ˆí˜¸</th>
+				<th>ê¸€ì œëª©</th>
+				<th>ì‘ì„±ì</th>
+				<th>ì¡°íšŒìˆ˜</th>
+				<th>ë‚ ì§œ</th>
+			</tr>
+			<%
+				boardDAO dao = new boardDAO();
+				ArrayList<boardVO> vo = dao.list();
+				for (int i = 0; i < vo.size(); i++) {
+			%>
+			<tr>
+				<td><%=vo.get(i).getBnum()%></td>
+				<td><%=vo.get(i).getTitle()%></td>
+				<td><%=vo.get(i).getWriter()%></td>
+				<td><%=vo.get(i).getCount()%></td>
+				<td><%=vo.get(i).getDate()%></td>
+			</tr>
+			<%
+				}
+			%>
+		</table>
+	</div>
+	<div>
+		<a href="write.jsp">ê¸€ì“°ê¸°</a>
+	</div>
 </body>
 </html>

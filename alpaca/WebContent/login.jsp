@@ -31,7 +31,7 @@
 <a href="join.jsp">join</a>
 </div>
 <div>
-<form action="login_proc.jsp" method="post">
+<form action="loginAction.jsp" method="post">
 <input type="text" name="id" id="id">
 <input type="password" name="password" id="password">
 <input type="submit" value="·Î±×ÀÎ">

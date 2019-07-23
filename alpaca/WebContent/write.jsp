@@ -22,32 +22,24 @@
 <title>AAP Start!</title>
 </head>
 <body>
-	<div>
-		<a href="index.jsp">home</a> <a href="about.jsp">about</a> <a
-			href="board.jsp">board</a> <a href="work.jsp">work</a>
-	</div>
-	<div>
-		<a href="login.jsp">login</a> <a href="join.jsp">join</a>
-	</div>
-	<div>김관진의 포트폴리오 사이트. 여러가지 업로드 예정.</div>
-	<%
-		if (session.getAttribute("id") == null) {
-	%>
-	<div>
-		회원가입을 하시면 게시판에 글을 남기실수 있어요. <a href="join.jsp">가입하러가기~</a> 이미 가입 하셨나요?
-		<a href="login.jsp">로그인하기~</a>
-	</div>
-	<%
-		}
-	%>
-	<%
-		String sid = null;
-		if (session.getAttribute("id") != null) {
-			sid = (String) session.getAttribute("id");
-	%>
-	<a href="logout.jsp">로그아웃하기</a>
-	<%
-		}
-	%>
+<div>
+<a href="index.jsp">home</a>
+<a href="about.jsp">about</a>
+<a href="board.jsp">board</a>
+<a href="work.jsp">work</a>
+<a href="login.jsp">login</a>
+<a href="join.jsp">join</a>
+</div>
+<div>
+<form action="writeAction.jsp" method="post">
+        <label for="title">제목</label>
+        <input type="text" name="title" id="title">
+        <label for="writer">작성자</label>
+        <input type="text" name="writer" id="writer">
+        <label for="content">내용</label>
+        <textarea name="content" id="content"></textarea>
+        <input type="submit" value="글쓰기">
+    </form>
+</div> 
 </body>
 </html>

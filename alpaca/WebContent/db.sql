@@ -11,3 +11,16 @@ regdate date not null
 desc member;
 
 select * from member;
+
+create table board(
+bnum int auto_increment primary key,
+title varchar(100) not null,
+writer varchar(100) not null,
+content varchar(2000) not null,
+count int not null,
+wridate date not null
+);
+
+desc board;
+
+select * from board;
