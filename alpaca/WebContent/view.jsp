@@ -1,7 +1,7 @@
-<%@page import="com.alpaca.board.boardVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.alpaca.board.boardVO"%>
 <%@ page import="com.alpaca.board.boardDAO"%>
 <!DOCTYPE html>
 <html>
@@ -30,34 +30,18 @@
 			href="board.jsp">board</a> <a href="work.jsp">work</a> <a
 			href="login.jsp">login</a> <a href="join.jsp">join</a>
 	</div>
+	<%
+		int num = Integer.parseInt(request.getParameter("bnum"));
+		boardDAO dao = new boardDAO();
+		ArrayList<boardVO> view = dao.view(num);
+	%>
 	<div>
-		<table style="width: 100%">
-			<tr>
-				<th>글번호</th>
-				<th>글제목</th>
-				<th>작성자</th>
-				<th>조회수</th>
-				<th>날짜</th>
-			</tr>
-			<%
-				boardDAO dao = new boardDAO();
-				ArrayList<boardVO> vo = dao.list();
-				for (int i = 0; i < vo.size(); i++) {
-			%>
-			<tr>
-				<td><%=vo.get(i).getBnum()%></td>
-				<td><a href="view.jsp?bnum=<%=vo.get(i).getBnum()%>"><%=vo.get(i).getTitle()%></a></td>
-				<td><%=vo.get(i).getWriter()%></td>
-				<td><%=vo.get(i).getCount()%></td>
-				<td><%=vo.get(i).getDate()%></td>
-			</tr>
-			<%
-				}
-			%>
+		<table>
+		<%=view.get(0).getTitle() %>
+		<%=view.get(0).getWriter() %>
+		<%=view.get(0).getContent() %>
+		<%=view.get(0).getDate() %>
 		</table>
-	</div>
-	<div>
-		<a href="write.jsp">글쓰기</a>
 	</div>
 </body>
 </html>

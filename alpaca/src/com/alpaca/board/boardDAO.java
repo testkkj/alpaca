@@ -93,5 +93,33 @@ public class boardDAO {
 		return al;
 
 	}
+	
+	public ArrayList<boardVO> view(int num) {
+		System.out.println("jdbc로 view() 기능 처리");
+		String sql = "select title, writer, content, wridate from board where bnum = ?";
+		ArrayList<boardVO> al = new ArrayList<boardVO>();
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, num);
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				boardVO vo = new boardVO();
+				vo.setTitle(rs.getString(1));
+				vo.setWriter(rs.getString(2));
+				vo.setContent(rs.getString(3));
+				vo.setDate(rs.getString(4));
+				al.add(vo);
+			}
+			System.out.println("view() try문 실행");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+			System.out.println("view() finally문 실행");
+		}
+		return al;
+
+	}
 
 }
