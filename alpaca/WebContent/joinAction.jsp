@@ -1,23 +1,27 @@
-<%@ page import="java.net.http.HttpClient.Redirect"%>
+<%@ page import="com.alpaca.member.memberVO"%>
+<%@ page import="com.alpaca.member.memberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
-%>
-<%@ page import="com.alpaca.member.memberVO"%>
-<%@ page import="com.alpaca.member.memberDAO"%>
-<jsp:useBean id="vo" class="com.alpaca.member.memberVO" scope="page"></jsp:useBean>
-<jsp:setProperty property="id" name="vo" />
-<jsp:setProperty property="password" name="vo" />
-<jsp:setProperty property="email" name="vo" />
-<jsp:setProperty property="tel" name="vo" />
+	request.setCharacterEncoding("UTF-8");
 
-<%
+	String id = request.getParameter("id");
+	String password = request.getParameter("password");
+	String email = request.getParameter("email");
+	String tel = request.getParameter("tel");
+
+	memberVO vo = new memberVO();
+
+	vo.setId(id);
+	vo.setPassword(password);
+	vo.setEmail(email);
+	vo.setTel(tel);
+
 	if (vo.getId() == null || vo.getId() == "" || vo.getPassword() == null || vo.getPassword() == ""
 			|| vo.getEmail() == null || vo.getEmail() == "") {
 %>
 <script>
-	alert("빠진곳이 있습니다.");
+	alert("모두 입력해 주세요.");
 </script>
 <%
 	} else {

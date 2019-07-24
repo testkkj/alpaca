@@ -19,33 +19,45 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 	crossorigin="anonymous"></script>
-<title>AAP Start!</title>
+<title>알파카</title>
 </head>
 <body>
-	<div>
-		<a href="index.jsp">home</a> <a href="about.jsp">about</a> <a
-			href="board.jsp">board</a> <a href="work.jsp">work</a>
-	</div>
-	<div>
-		<a href="login.jsp">login</a> <a href="join.jsp">join</a>
-	</div>
-	<div>김관진의 포트폴리오 사이트. 여러가지 업로드 예정.</div>
 	<%
 		if (session.getAttribute("id") == null) {
 	%>
-	<div>
-		회원가입을 하시면 게시판에 글을 남기실수 있어요. <a href="join.jsp">가입하러가기~</a> 이미 가입 하셨나요?
-		<a href="login.jsp">로그인하기~</a>
+	<div class="row">
+		<div class="col-md-8 bg-primary">
+			<a href="index.jsp">home</a> <a href="about.jsp">about</a> <a
+				href="board.jsp">board</a> <a href="work.jsp">work</a>
+		</div>
+		<div class="col-md-4 bg-success">
+			<a href="login.jsp">login</a> <a href="join.jsp">join</a>
+		</div>
+	</div>
+	<div class="col-md-12 bg-success">
+		로그인 하시면 페이지 소개글이 나옵니다!<br>
+		<a href="join.jsp">가입하기</a><br>
+		이미 가입 하셨나요?<br>
+		<a href="login.jsp">로그인</a><br>
 	</div>
 	<%
-		}
+		} else {
 	%>
-	<%
-		String sid = null;
-		if (session.getAttribute("id") != null) {
-			sid = (String) session.getAttribute("id");
-	%>
-	<a href="logout.jsp">로그아웃하기</a>
+	<div class="row">
+		<div class="col-md-8 bg-primary">
+			<a href="index.jsp">home</a> <a href="about.jsp">about</a> <a
+				href="board.jsp">board</a> <a href="work.jsp">work</a>
+		</div>
+		<div class="col-md-4 bg-success">
+			<a href="logout.jsp">로그아웃</a>
+		</div>
+	</div>
+	<div class="col-md-12 bg-success">
+		간략한 설명~<br>
+		about 페이지에는 저에 대한 소개가 있습니다.<br>
+		board 페이지에는 제가 이 사이트를 만드는 과정을 업로드 할 예정입니다.<br>
+		work 페이지에는 저의 작업물들의 사진과 github링크를 걸어둘 예정입니다.<br>
+	</div>
 	<%
 		}
 	%>

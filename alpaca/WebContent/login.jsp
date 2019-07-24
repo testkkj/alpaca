@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,25 +19,38 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 	crossorigin="anonymous"></script>
-<title>AAP Start!</title>
+<title>ì•ŒíŒŒì¹´</title>
 </head>
 <body>
-<div>
-<a href="index.jsp">home</a>
-<a href="about.jsp">about</a>
-<a href="board.jsp">board</a>
-<a href="work.jsp">work</a>
-<a href="login.jsp">login</a>
-<a href="join.jsp">join</a>
-</div>
-<div>
-<form action="loginAction.jsp" method="post">
-<input type="text" name="id" id="id">
-<input type="password" name="password" id="password">
-<input type="submit" value="·Î±×ÀÎ">
-</form>
-È¸¿ø°¡ÀÔÀ» ÇÏ½Ã¸é °Ô½ÃÆÇ¿¡ ±ÛÀ» ³²±â½Ç¼ö ÀÖ¾î¿ä.
-<a href="join.jsp">°¡ÀÔÇÏ·¯°¡±â~</a>
-</div>
+	<div class="row">
+		<div class="col-md-8 bg-primary">
+			<a href="index.jsp">home</a> <a href="about.jsp">about</a> <a
+				href="board.jsp">board</a> <a href="work.jsp">work</a>
+		</div>
+		<div class="col-md-4 bg-success">
+			<a href="login.jsp">login</a> <a href="join.jsp">join</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col bg-success">
+			<form action="loginAction.jsp" method="post">
+				<div>
+					<label for="id">ì•„ì´ë””</label><br>
+					<input type="text" name="id" id="id">
+				</div>
+				<div>
+					<label for="password">ë¹„ë°€ë²ˆí˜¸</label><br>
+					<input type="password" name="password" id="password">
+				</div>
+				<br>
+				<div>
+					<button type="submit" class="btn btn-primary">ë¡œê·¸ì¸</button>
+					ë˜ëŠ” <a><button class="btn btn-primary">ê°€ì…í•˜ê¸°</button></a>
+				</div>
+			</form>
+		</div>
+		<div class="col"></div>
+	</div>
 </body>
 </html>

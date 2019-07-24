@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="utf-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,26 +19,43 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 	crossorigin="anonymous"></script>
-<title>AAP Start!</title>
+<title>알파카</title>
 </head>
 <body>
-	<div>
-		<a href="index.jsp">home</a> <a href="about.jsp">about</a> <a
-			href="board.jsp">board</a> <a href="work.jsp">work</a> <a
-			href="login.jsp">login</a> <a href="join.jsp">join</a>
+	<div class="row">
+		<div class="col-md-8 bg-primary">
+			<a href="index.jsp">home</a> <a href="about.jsp">about</a> <a
+				href="board.jsp">board</a> <a href="work.jsp">work</a>
+		</div>
+		<div class="col-md-4 bg-success">
+			<a href="login.jsp">login</a> <a href="join.jsp">join</a>
+		</div>
 	</div>
-	<div>
-	<form action="joinAction.jsp" method="post">
-        <label for="id">아이디</label>
-        <input type="text" name="id" id="id">
-        <label for="password">비밀번호</label>
-        <input type="password" name="password" id="password">
-        <label for="email">이메일</label>
-        <input type="email" name="email" id="email">
-        <label for="tel">전화번호</label>
-        <input type="tel" name="tel" id="tel">
-        <input type="submit" value="가입하기">
-    </form>
+	<div class="row">
+	<div class="col"></div>
+	<div class="col bg-success">
+		<form action="joinAction.jsp" method="post">
+			<div>
+				<label for="id">아이디</label><br><input type="text" name="id" id="id">
+			</div>
+			<div>
+				<label for="password">비밀번호</label><br><input type="password"
+					name="password" id="password">
+			</div>
+			<div>
+				<label for="email">이메일</label><br><input type="email" name="email"
+					id="email">
+			</div>
+			<div>
+				<label for="tel">전화번호</label><br><input type="tel" name="tel" id="tel">
+			</div>
+			<br>
+			<div>
+				<button type="submit" class="btn btn-primary">가입하기</button>
+			</div>
+		</form>
+	</div>
+	<div class="col"></div>
 	</div>
 </body>
 </html>

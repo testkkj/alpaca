@@ -19,16 +19,47 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 	crossorigin="anonymous"></script>
-<title>AAP Start!</title>
+<title>알파카</title>
 </head>
 <body>
-<div>
-<a href="index.jsp">home</a>
-<a href="about.jsp">about</a>
-<a href="board.jsp">board</a>
-<a href="work.jsp">work</a>
-<a href="login.jsp">login</a>
-<a href="join.jsp">join</a>
-</div>
+	<%
+		if (session.getAttribute("id") == null) {
+	%>
+	<div class="row">
+		<div class="col-md-8 bg-primary">
+			<a href="index.jsp">home</a> <a href="about.jsp">about</a> <a
+				href="board.jsp">board</a> <a href="work.jsp">work</a>
+		</div>
+		<div class="col-md-4 bg-success">
+			<a href="login.jsp">login</a> <a href="join.jsp">join</a>
+		</div>
+	</div>
+	<div class="col-md-12 bg-success">
+		로그인 하시면 페이지 소개글이 나옵니다!<br>
+		<a href="join.jsp">가입하기</a><br>
+		이미 가입 하셨나요?<br>
+		<a href="login.jsp">로그인</a><br>
+	</div>
+	<%
+		} else {
+	%>
+	<div class="row">
+		<div class="col-md-8 bg-primary">
+			<a href="index.jsp">home</a> <a href="about.jsp">about</a> <a
+				href="board.jsp">board</a> <a href="work.jsp">work</a>
+		</div>
+		<div class="col-md-4 bg-success">
+			<a href="logout.jsp">로그아웃</a>
+		</div>
+	</div>
+	<div class="col-md-12 bg-success">
+		방문해주셔서 감사합니다.<br>
+		김관진의 포트폴리오 사이트.<br>
+		거창하진 않지만 하나하나 기초부터 만들어 나가는<br>
+		나무같은 사이트가 되겠습니다.<br>
+	</div>
+	<%
+		}
+	%>
 </body>
 </html>
