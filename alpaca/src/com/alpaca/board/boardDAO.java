@@ -64,6 +64,49 @@ public class boardDAO {
 		}
 
 	}
+	
+	public void update(int num, String title, String writer, String content) {
+		System.out.println("jdbc로 update() 기능 처리");
+		String sql = "update board set title=?, writer=?, content=?, count=?, wridate=? where bnum=?";
+		boardVO vo = new boardVO();
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, title);
+			stmt.setString(2, writer);
+			stmt.setString(3, content);
+			stmt.setInt(4, 1);
+			stmt.setString(5, getDate());
+			stmt.setInt(6, num);
+			stmt.executeUpdate();
+			System.out.println("update() try문 실행");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+			System.out.println("update() finally문 실행");
+		}
+
+	}
+	
+	public void delete(int num) {
+		System.out.println("jdbc로 delete() 기능 처리");
+		String sql = "delete from board where bnum=?";
+		boardVO vo = new boardVO();
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, num);
+			stmt.executeUpdate();
+			System.out.println("delete() try문 실행");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+			System.out.println("delete() finally문 실행");
+		}
+
+	}
 
 	public ArrayList<boardVO> list() {
 		System.out.println("jdbc로 list() 기능 처리");

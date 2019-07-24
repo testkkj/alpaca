@@ -1,4 +1,4 @@
-<%@page import="java.util.ArrayList"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.alpaca.board.boardVO"%>
@@ -36,14 +36,14 @@
 		ArrayList<boardVO> view = dao.view(num);
 	%>
 	<div>
-		<table>
-		<%=view.get(0).getTitle() %>
-		<%=view.get(0).getWriter() %>
-		<%=view.get(0).getContent() %>
-		<%=view.get(0).getDate() %>
-		</table>
+		<form action="updateAction.jsp?bnum=<%=num %>" method="post">
+			<label for="title">제목</label> <input type="text" name="title"
+				id="title" placeholder="<%=view.get(0).getTitle()%>"> <label
+				for="writer">작성자</label> <input type="text" name="writer"
+				id="writer" placeholder="<%=view.get(0).getWriter()%>"> <label for="content">내용</label>
+			<textarea name="content" id="content" placeholder="<%=view.get(0).getContent() %>"></textarea>
+			<input type="submit" value="글수정">
+		</form>
 	</div>
-	<a href="update.jsp?bnum=<%=num %>">글수정</a>
-	<a href="deleteAction.jsp?bnum=<%=num %>">글삭제</a>
 </body>
 </html>
