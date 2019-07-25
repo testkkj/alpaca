@@ -108,14 +108,13 @@ public class boardDAO {
 
 	}
 
-	public ArrayList<boardVO> boardList(int num) {
+	public ArrayList<boardVO> boardList() {
 		System.out.println("jdbc로 boardList() 기능 처리");
-		String sql = "select bnum, title, writer, content, count, wridate from board where bnum<? order by bnum desc limit 5";
+		String sql = "select bnum, title, writer, content, count, wridate from board";
 		ArrayList<boardVO> al = new ArrayList<boardVO>();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, getNext()-(num-1)*5);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				boardVO vo = new boardVO();

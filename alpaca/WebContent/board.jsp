@@ -67,9 +67,19 @@
 					if (request.getParameter("pnum") != null) {
 						pagenum = Integer.parseInt(request.getParameter("pnum"));
 					}
+
 					boardDAO dao = new boardDAO();
-					ArrayList<boardVO> vo = dao.boardList(pagenum);
-					for (int i = 0; i < vo.size(); i++) {
+					ArrayList<boardVO> vo = dao.boardList();
+
+					int totalarticlenumber = vo.size();
+					int articleperpage = 5;
+					int totalpagenumber = (totalarticlenumber / articleperpage) + 1;
+					int startpagenumber = 1;
+					int startarticlenum = 0;
+					int endarticlenum = 0;
+
+					if (pagenum == startpagenumber) {
+						for (int i = 0; i < vo.size(); i++) {
 			%>
 			<tr>
 				<td><%=vo.get(i).getBnum()%></td>
@@ -79,7 +89,29 @@
 				<td><%=vo.get(i).getDate()%></td>
 			</tr>
 			<%
-				}
+				if (i == 4) {
+								break;
+							}
+						}
+					} else if (pagenum > startpagenumber) {
+						startarticlenum = pagenum * 5 - 5;
+						endarticlenum = pagenum * 5;
+						for (int i = startarticlenum; i < endarticlenum; i++) {
+			%>
+			<tr>
+				<td><%=vo.get(i).getBnum()%></td>
+				<td><a href="view.jsp?bnum=<%=vo.get(i).getBnum()%>"><%=vo.get(i).getTitle()%></a></td>
+				<td><%=vo.get(i).getWriter()%></td>
+				<td><%=vo.get(i).getCount()%></td>
+				<td><%=vo.get(i).getDate()%></td>
+			</tr>
+			<%
+				if (vo.size() < i || vo.size() < endarticlenum) {
+
+								break;
+							}
+						}
+					}
 			%>
 		</table>
 	</div>
@@ -91,7 +123,7 @@
 		<a href="board.jsp?pnum=<%=pagenum - 1%>">이전</a>
 		<%
 			}
-				if (dao.boardNextPage(pagenum+1)) {
+				if (pagenum == 1 || pagenum != totalpagenumber) {
 		%>
 		<a href="board.jsp?pnum=<%=pagenum + 1%>">다음</a>
 		<%
