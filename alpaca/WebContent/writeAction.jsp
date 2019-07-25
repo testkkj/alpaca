@@ -19,7 +19,7 @@
 <%
 	} else {
 		boardDAO dao = new boardDAO();
-		dao.insert(vo.getTitle(), vo.getWriter(), vo.getContent());
+		dao.boardInsert(vo.getTitle(), vo.getWriter(), vo.getContent());
 %>
 <script>
 	alert("가입이 완료되었습니다.")

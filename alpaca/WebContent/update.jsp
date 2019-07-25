@@ -33,7 +33,7 @@
 	<%
 		int num = Integer.parseInt(request.getParameter("bnum"));
 		boardDAO dao = new boardDAO();
-		ArrayList<boardVO> view = dao.view(num);
+		ArrayList<boardVO> view = dao.boardView(num);
 	%>
 	<div>
 		<form action="updateAction.jsp?bnum=<%=num %>" method="post">

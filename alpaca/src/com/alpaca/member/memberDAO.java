@@ -25,8 +25,8 @@ public class memberDAO {
 		return "";
 	}
 
-	public void insert(String id, String password, String email, String tel) {
-		System.out.println("jdbc로 insert() 기능 처리");
+	public void memberInsert(String id, String password, String email, String tel) {
+		System.out.println("jdbc로 memberInsert() 기능 처리");
 		String sql = "insert into member(id, password, email, tel, regdate) values (?,?,?,?,?)";
 		try {
 			conn = JDBCUtil.getConnection();
@@ -37,12 +37,12 @@ public class memberDAO {
 			stmt.setString(4, tel);
 			stmt.setString(5, getDate());
 			stmt.executeUpdate();
-			System.out.println("insert() try문 실행");
+			System.out.println("memberInsert() try문 실행");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(stmt, conn);
-			System.out.println("insert() finally문 실행");
+			System.out.println("memberInsert() finally문 실행");
 		}
 
 	}

@@ -1,4 +1,4 @@
-package com.alpaca.board;
+package com.alpaca.comment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import com.alpaca.common.JDBCUtil;
 
-public class boardDAO {
+public class commentDAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
@@ -27,7 +27,7 @@ public class boardDAO {
 	}
 
 	public int getNext() {
-		String SQL = "select bnum from board order by bnum desc";
+		String SQL = "select bnum from comment order by bnum desc";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -42,33 +42,31 @@ public class boardDAO {
 		return -1;
 	}
 
-	public void boardInsert(String title, String writer, String content) {
-		System.out.println("jdbc로 boardInsert() 기능 처리");
-		String sql = "insert into board(bnum, title, writer, content, count, wridate) values (?,?,?,?,?,?)";
+	public void commentInsert(int bnum, String writer, String content) {
+		System.out.println("jdbc로 commentInsert() 기능 처리");
+		String sql = "insert into comment(bnum, writer, content, wridate) values (?,?,?,?)";
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, getNext());
-			stmt.setString(2, title);
-			stmt.setString(3, writer);
-			stmt.setString(4, content);
-			stmt.setInt(5, 1);
-			stmt.setString(6, getDate());
+			stmt.setInt(1, bnum);
+			stmt.setString(2, writer);
+			stmt.setString(3, content);
+			stmt.setString(4, getDate());
 			stmt.executeUpdate();
-			System.out.println("boardInsert() try문 실행");
+			System.out.println("commentInsert() try문 실행");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(stmt, conn);
-			System.out.println("boardInsert() finally문 실행");
+			System.out.println("commentInsert() finally문 실행");
 		}
 
 	}
 	
-	public void boardUpdate(int num, String title, String writer, String content) {
-		System.out.println("jdbc로 boardUpdate() 기능 처리");
+	public void commentUpdate(int num, String title, String writer, String content) {
+		System.out.println("jdbc로 commentUpdate() 기능 처리");
 		String sql = "update board set title=?, writer=?, content=?, count=?, wridate=? where bnum=?";
-		boardVO vo = new boardVO();
+		commentVO vo = new commentVO();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
@@ -79,55 +77,52 @@ public class boardDAO {
 			stmt.setString(5, getDate());
 			stmt.setInt(6, num);
 			stmt.executeUpdate();
-			System.out.println("boardUpdate() try문 실행");
+			System.out.println("commentUpdate() try문 실행");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(stmt, conn);
-			System.out.println("boardUpdate() finally문 실행");
+			System.out.println("commentUpdate() finally문 실행");
 		}
 
 	}
 	
-	public void boardDelete(int num) {
-		System.out.println("jdbc로 boardDelete() 기능 처리");
+	public void commentDelete(int num) {
+		System.out.println("jdbc로 commentDelete() 기능 처리");
 		String sql = "delete from board where bnum=?";
-		boardVO vo = new boardVO();
+		commentVO vo = new commentVO();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, num);
 			stmt.executeUpdate();
-			System.out.println("boardDelete() try문 실행");
+			System.out.println("commentDelete() try문 실행");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(stmt, conn);
-			System.out.println("boardDelete() finally문 실행");
+			System.out.println("commentDelete() finally문 실행");
 		}
 
 	}
 
-	public ArrayList<boardVO> boardList(int num) {
-		System.out.println("jdbc로 boardList() 기능 처리");
-		String sql = "select bnum, title, writer, content, count, wridate from board where bnum<? order by bnum desc limit 5";
-		ArrayList<boardVO> al = new ArrayList<boardVO>();
+	public ArrayList<commentVO> commentList(int num) {
+		System.out.println("jdbc로 commentList() 기능 처리");
+		String sql = "select writer, content, wridate from comment where bnum=?";
+		ArrayList<commentVO> al = new ArrayList<commentVO>();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, getNext()-(num-1)*5);
+			stmt.setInt(1, num);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
-				boardVO vo = new boardVO();
-				vo.setBnum(rs.getInt(1));
-				vo.setTitle(rs.getString(2));
-				vo.setWriter(rs.getString(3));
-				vo.setContent(rs.getString(4));
-				vo.setCount(rs.getInt(5));
-				vo.setDate(rs.getString(6));
+				commentVO vo = new commentVO();
+				vo.setWriter(rs.getString(1));
+				vo.setContent(rs.getString(2));
+				vo.setWridate(rs.getString(3));				
 				al.add(vo);
 			}
-			System.out.println("boardList() try문 실행");
+			System.out.println("commentList() try문 실행");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -135,7 +130,7 @@ public class boardDAO {
 
 	}
 	
-	public boolean boardNextPage(int num) {
+	public boolean commentNextPage(int num) {
 		String SQL = "select * from board where bnum < ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -151,24 +146,23 @@ public class boardDAO {
 
 	}
 	
-	public ArrayList<boardVO> boardView(int num) {
-		System.out.println("jdbc로 boardView() 기능 처리");
-		String sql = "select title, writer, content, wridate from board where bnum = ?";
-		ArrayList<boardVO> al = new ArrayList<boardVO>();
+	public ArrayList<commentVO> commentView(int num) {
+		System.out.println("jdbc로 commentView() 기능 처리");
+		String sql = "select writer, content, wridate from comment where bnum = ?";
+		ArrayList<commentVO> al = new ArrayList<commentVO>();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, num);
 			rs = stmt.executeQuery();
 			if (rs.next()) {
-				boardVO vo = new boardVO();
-				vo.setTitle(rs.getString(1));
-				vo.setWriter(rs.getString(2));
-				vo.setContent(rs.getString(3));
-				vo.setDate(rs.getString(4));
+				commentVO vo = new commentVO();
+				vo.setWriter(rs.getString(1));
+				vo.setContent(rs.getString(2));
+				vo.setWridate(rs.getString(3));
 				al.add(vo);
 			}
-			System.out.println("boardView() try문 실행");
+			System.out.println("commentView() try문 실행");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

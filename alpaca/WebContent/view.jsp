@@ -1,3 +1,5 @@
+<%@page import="com.alpaca.comment.commentVO"%>
+<%@page import="com.alpaca.comment.commentDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -33,17 +35,42 @@
 	<%
 		int num = Integer.parseInt(request.getParameter("bnum"));
 		boardDAO dao = new boardDAO();
-		ArrayList<boardVO> view = dao.view(num);
+		ArrayList<boardVO> view = dao.boardView(num);
 	%>
 	<div>
 		<table>
-		<%=view.get(0).getTitle() %>
-		<%=view.get(0).getWriter() %>
-		<%=view.get(0).getContent() %>
-		<%=view.get(0).getDate() %>
+			<%=view.get(0).getTitle()%>
+			<%=view.get(0).getWriter()%>
+			<%=view.get(0).getContent()%>
+			<%=view.get(0).getDate()%>
 		</table>
 	</div>
-	<a href="update.jsp?bnum=<%=num %>">글수정</a>
-	<a href="deleteAction.jsp?bnum=<%=num %>">글삭제</a>
+	<a href="update.jsp?bnum=<%=num%>">글수정</a>
+	<a href="deleteAction.jsp?bnum=<%=num%>">글삭제</a>
+	<div>
+		<form action="commentAction.jsp?bnum=<%=num%>" method="post">
+			<input type="text" name="writer" id="writer">
+			<textarea name="content" id="content" cols="30" rows="2"></textarea>
+			<input type="submit" value="댓글쓰기">
+		</form>
+	</div>
+	<%
+		commentDAO cdao = new commentDAO();
+		ArrayList<commentVO> cview = cdao.commentList(num);
+	%>
+	<div>
+			<%
+				for (int i = 0; i < cview.size(); i++) {
+			%>
+			<table>
+			<td><%=cview.get(i).getWriter()%></td>
+			<td><%=cview.get(i).getContent()%></td>
+			<td><%=cview.get(i).getWridate()%></td>
+			</table>
+			<%
+				}
+			%>
+	</div>
+
 </body>
 </html>

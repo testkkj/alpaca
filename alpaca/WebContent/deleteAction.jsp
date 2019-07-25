@@ -14,7 +14,7 @@
 	int num = Integer.parseInt(request.getParameter("bnum"));
 	boardDAO dao = new boardDAO();
 
-	dao.delete(num);
+	dao.boardDelete(num);
 %>
 <script>
 	alert("가입이 완료되었습니다.")

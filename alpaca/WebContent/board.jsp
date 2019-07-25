@@ -54,7 +54,7 @@
 		</div>
 	</div>
 	<div class="col-md-12 bg-success">
-		<table style="width: 100%">
+		<table>
 			<tr>
 				<th>글번호</th>
 				<th>글제목</th>
@@ -63,16 +63,13 @@
 				<th>날짜</th>
 			</tr>
 			<%
-			int pagenum = 1;
-			if(request.getParameter("pagenum")!=null){
-				pagenum = request.getParameter("pagenum");
-			}
-				boardDAO dao = new boardDAO();
-					ArrayList<boardVO> vo = dao.list();
+				int pagenum = 1;
+					if (request.getParameter("pnum") != null) {
+						pagenum = Integer.parseInt(request.getParameter("pnum"));
+					}
+					boardDAO dao = new boardDAO();
+					ArrayList<boardVO> vo = dao.boardList(pagenum);
 					for (int i = 0; i < vo.size(); i++) {
-						if(vo.size()%5==0){
-							pagenum += pagenum;
-						}
 			%>
 			<tr>
 				<td><%=vo.get(i).getBnum()%></td>
@@ -85,11 +82,24 @@
 				}
 			%>
 		</table>
+	</div>
+	<div>
 		<a href="write.jsp">글쓰기</a>
+		<%
+			if (pagenum != 1) {
+		%>
+		<a href="board.jsp?pnum=<%=pagenum - 1%>">이전</a>
+		<%
+			}
+				if (dao.boardNextPage(pagenum+1)) {
+		%>
+		<a href="board.jsp?pnum=<%=pagenum + 1%>">다음</a>
+		<%
+			}
+		%>
 	</div>
 	<%
 		}
 	%>
-
 </body>
 </html>

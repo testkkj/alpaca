@@ -23,7 +23,7 @@
 </script>
 <%
 	} else {
-		dao.update(num, vo.getTitle(), vo.getWriter(), vo.getContent());
+		dao.boardUpdate(num, vo.getTitle(), vo.getWriter(), vo.getContent());
 		out.print(num);
 		out.print(vo.getTitle());
 		out.print(vo.getWriter());

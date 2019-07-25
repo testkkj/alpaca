@@ -26,7 +26,7 @@
 <%
 	} else {
 		memberDAO dao = new memberDAO();
-		dao.insert(vo.getId(), vo.getPassword(), vo.getEmail(), vo.getTel());
+		dao.memberInsert(vo.getId(), vo.getPassword(), vo.getEmail(), vo.getTel());
 %>
 <script>
 	alert("가입이 완료되었습니다.")
