@@ -79,7 +79,9 @@
 					int endarticlenum = 0;
 
 					if (pagenum == startpagenumber) {
-						for (int i = 0; i < vo.size(); i++) {
+						if (vo.size() != 0) {
+							for (int i = 0; i < vo.size(); i++) {
+								if (i < 5) {
 			%>
 			<tr>
 				<td><%=vo.get(i).getBnum()%></td>
@@ -89,14 +91,14 @@
 				<td><%=vo.get(i).getDate()%></td>
 			</tr>
 			<%
-				if (i == 4) {
-								break;
+				}
 							}
 						}
 					} else if (pagenum > startpagenumber) {
 						startarticlenum = pagenum * 5 - 5;
 						endarticlenum = pagenum * 5;
 						for (int i = startarticlenum; i < endarticlenum; i++) {
+							if (vo.size() > i || vo.size() > endarticlenum) {
 			%>
 			<tr>
 				<td><%=vo.get(i).getBnum()%></td>
@@ -106,10 +108,7 @@
 				<td><%=vo.get(i).getDate()%></td>
 			</tr>
 			<%
-				if (vo.size() < i || vo.size() < endarticlenum) {
-
-								break;
-							}
+				}
 						}
 					}
 			%>
