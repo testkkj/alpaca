@@ -55,7 +55,7 @@
             </tr>
             <tr>
                 <td>글내용</td>
-                <td><textarea rows="12" cols="50" class="bg-dark border-0"><%=view.get(0).getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+                <td><textarea rows="12" cols="50" class="bg-dark border-0 text-success"><%=view.get(0).getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
 					.replaceAll("\n", "<br>")%></textarea></td>
             </tr>
         </table>

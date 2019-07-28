@@ -131,7 +131,7 @@
 		%>
 	</div>
 	<div class="container mt-5">
-	<a href="write.jsp" class="btn btn-success btn-lg" role="button">글쓰기</a>
+	<a href="write.jsp" class="btn btn-outline-secondary btn-lg" role="button">글쓰기</a>
 	</div>
 	<%
 		}
