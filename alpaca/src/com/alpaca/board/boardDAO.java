@@ -33,13 +33,25 @@ public class boardDAO {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				return rs.getInt(1) + 1;
+				return rs.getInt(0) + 1;
 			}
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public void getView(int num) {
+		String SQL = "update board set count= count + 1 where bnum = ?";
+		try {
+			conn = JDBCUtil.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void boardInsert(String title, String writer, String content) {
@@ -110,7 +122,7 @@ public class boardDAO {
 
 	public ArrayList<boardVO> boardList() {
 		System.out.println("jdbc로 boardList() 기능 처리");
-		String sql = "select bnum, title, writer, content, count, wridate from board";
+		String sql = "select bnum, title, writer, content, count, wridate from board order by bnum desc";
 		ArrayList<boardVO> al = new ArrayList<boardVO>();
 		try {
 			conn = JDBCUtil.getConnection();

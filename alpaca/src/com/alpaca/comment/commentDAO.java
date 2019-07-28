@@ -63,19 +63,16 @@ public class commentDAO {
 
 	}
 	
-	public void commentUpdate(int num, String title, String writer, String content) {
+	public void commentUpdate(int num, int cnum, String content) {
 		System.out.println("jdbc로 commentUpdate() 기능 처리");
-		String sql = "update board set title=?, writer=?, content=?, count=?, wridate=? where bnum=?";
+		String sql = "update comment set content=? where bnum=? and cnum=?";
 		commentVO vo = new commentVO();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, title);
-			stmt.setString(2, writer);
-			stmt.setString(3, content);
-			stmt.setInt(4, 1);
-			stmt.setString(5, getDate());
-			stmt.setInt(6, num);
+			stmt.setString(1, content);
+			stmt.setInt(2, num);
+			stmt.setInt(3, cnum);
 			stmt.executeUpdate();
 			System.out.println("commentUpdate() try문 실행");
 		} catch (Exception e) {
@@ -87,28 +84,26 @@ public class commentDAO {
 
 	}
 	
-	public void commentDelete(int num) {
+	public void commentDelete(int num, int cnum) {
 		System.out.println("jdbc로 commentDelete() 기능 처리");
-		String sql = "delete from board where bnum=?";
+		String sql = "delete from comment where bnum=? and cnum=?";
 		commentVO vo = new commentVO();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, num);
+			stmt.setInt(2, cnum);
 			stmt.executeUpdate();
 			System.out.println("commentDelete() try문 실행");
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JDBCUtil.close(stmt, conn);
-			System.out.println("commentDelete() finally문 실행");
 		}
 
 	}
 
 	public ArrayList<commentVO> commentList(int num) {
 		System.out.println("jdbc로 commentList() 기능 처리");
-		String sql = "select writer, content, wridate from comment where bnum=?";
+		String sql = "select cnum, writer, content, wridate from comment where bnum=?";
 		ArrayList<commentVO> al = new ArrayList<commentVO>();
 		try {
 			conn = JDBCUtil.getConnection();
@@ -117,9 +112,10 @@ public class commentDAO {
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				commentVO vo = new commentVO();
-				vo.setWriter(rs.getString(1));
-				vo.setContent(rs.getString(2));
-				vo.setWridate(rs.getString(3));				
+				vo.setCnum(rs.getInt(1));
+				vo.setWriter(rs.getString(2));
+				vo.setContent(rs.getString(3));
+				vo.setWridate(rs.getString(4));				
 				al.add(vo);
 			}
 			System.out.println("commentList() try문 실행");
@@ -130,36 +126,19 @@ public class commentDAO {
 
 	}
 	
-	public boolean commentNextPage(int num) {
-		String SQL = "select * from board where bnum < ?";
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext() - (num - 1) * 5);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				return true;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-
-	}
-	
-	public ArrayList<commentVO> commentView(int num) {
+	public ArrayList<commentVO> commentView(int num, int cnum) {
 		System.out.println("jdbc로 commentView() 기능 처리");
-		String sql = "select writer, content, wridate from comment where bnum = ?";
+		String sql = "select content from comment where bnum = ? and cnum = ?";
 		ArrayList<commentVO> al = new ArrayList<commentVO>();
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, num);
+			stmt.setInt(2, cnum);
 			rs = stmt.executeQuery();
 			if (rs.next()) {
 				commentVO vo = new commentVO();
-				vo.setWriter(rs.getString(1));
-				vo.setContent(rs.getString(2));
-				vo.setWridate(rs.getString(3));
+				vo.setContent(rs.getString(1));
 				al.add(vo);
 			}
 			System.out.println("commentView() try문 실행");

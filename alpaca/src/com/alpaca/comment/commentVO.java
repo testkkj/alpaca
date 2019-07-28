@@ -1,10 +1,19 @@
 package com.alpaca.comment;
 
 public class commentVO {
+	private int cnum;
 	private int bnum;
 	private String writer;
 	private String content;
 	private String wridate;
+
+	public int getCnum() {
+		return cnum;
+	}
+
+	public void setCnum(int cnum) {
+		this.cnum = cnum;
+	}
 
 	public int getBnum() {
 		return bnum;
@@ -40,7 +49,8 @@ public class commentVO {
 
 	@Override
 	public String toString() {
-		return "commentVO [bnum=" + bnum + ", writer=" + writer + ", content=" + content + ", wridate=" + wridate + "]";
+		return "commentVO [cnum=" + cnum + ", bnum=" + bnum + ", writer=" + writer + ", content=" + content
+				+ ", wridate=" + wridate + "]";
 	}
 
 }

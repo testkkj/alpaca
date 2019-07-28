@@ -36,3 +36,5 @@ wridate date not null
 desc comment;
 
 select * from comment;
+
+select content from comment where bnum = 15 and cnum = 2;

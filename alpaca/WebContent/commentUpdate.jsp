@@ -42,80 +42,24 @@
 	</div>
 	<%
 		int num = Integer.parseInt(request.getParameter("bnum"));
-		boardDAO dao = new boardDAO();
-		dao.getView(num);
-		ArrayList<boardVO> view = dao.boardView(num);
+		int cnum = Integer.parseInt(request.getParameter("cnum"));
+
+		commentDAO cdao = new commentDAO();
+		ArrayList<commentVO> cview = cdao.commentView(num, cnum);
 	%>
 	<div class="container">
-
+	<form action="commentUpdateAction.jsp?bnum=<%=num %>&cnum=<%=cnum %>" method="post">
 		<table class="table table-dark table-hover text-success">
 			<tr>
-				<td>글제목</td>
-				<td><%=view.get(0).getTitle()%></td>
+				<td><textarea name="content" rows="5" cols="75" placeholder="<%=cview.get(0).getContent()%>" class="bg-dark border-0 text-success"></textarea>
+				</td>
+				<td><button type="submit" class="btn btn-success">댓글수정</button></td>
 			</tr>
-			<tr>
-				<td>작성자</td>
-				<td><%=view.get(0).getWriter()%></td>
-			</tr>
-			<tr>
-				<td>작성일</td>
-				<td><%=view.get(0).getDate()%></td>
-			</tr>
-			<tr>
-				<td>글내용</td>
-				<td><textarea rows="12" cols="50"
-						class="bg-dark border-0 text-success"><%=view.get(0).getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
-					.replaceAll("\n", "<br>")%></textarea></td>
-			</tr>
+			
 		</table>
-	</div>
-	<a href="update.jsp?bnum=<%=num%>"
-		class="btn btn-outline-secondary btn-lg border-0" role="button">글수정</a>
-	<a href="deleteAction.jsp?bnum=<%=num%>"
-		class="btn btn-outline-secondary btn-lg border-0" role="button">글삭제</a>
-	<div class="container">
-		<form action="commentAction.jsp?bnum=<%=num%>" method="post">
-			<table class="table table-dark table-hover text-success">
-				<tr>
-					<td>
-						<div class="form-group">
-							<textarea name="content" id="content" cols="75" rows="5"
-								class="bg-dark text-success border-0"></textarea>
-						</div>
-					</td>
-					<td>
-						<button type="submit" class="btn btn-success">댓글쓰기</button>
-					</td>
-				</tr>
-			</table>
 		</form>
 	</div>
-	<%
-		commentDAO cdao = new commentDAO();
-		ArrayList<commentVO> cview = cdao.commentList(num);
-	%>
-	<div class="container">
-		<table class="table table-dark table-hover text-success">
-			<%
-				for (int i = 0; i < cview.size(); i++) {
-			%>
-			<tr>
-				<td><%=cview.get(i).getWriter()%></td>
-				<td><%=cview.get(i).getContent()%></td>
-				<td><%=cview.get(i).getWridate()%></td>
-				<td>
-				<a href="commentUpdate.jsp?bnum=<%=num %>&cnum=<%=cview.get(i).getCnum() %>" class="btn btn-outline-secondary btn-sm border-0"
-			role="button">수정</a>
-			<a href="commentDeleteAction.jsp?bnum=<%=num %>&cnum=<%=cview.get(i).getCnum() %>" class="btn btn-outline-secondary btn-sm border-0"
-			role="button">삭제</a>
-				</td>
-			</tr>
-			<%
-				}
-			%>
-		</table>
-	</div>
+
 
 </body>
-
 </html>

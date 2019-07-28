@@ -63,7 +63,7 @@
                 <td>글내용</td>
                 <td><div class="form-group">
         <textarea name="content" id="content" cols="50" rows="12" class="bg-dark text-success border-0"></textarea>
-    </div></textarea></td>
+    </div></td>
             </tr>
         </table>
     
