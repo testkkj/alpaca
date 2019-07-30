@@ -5,10 +5,11 @@
 	request.setCharacterEncoding("utf-8");
 
 	int bnum = Integer.parseInt(request.getParameter("bnum"));
-	String writer = (String)session.getAttribute("id");
+	int cnum = Integer.parseInt(request.getParameter("cnum"));
+	String writer = (String) session.getAttribute("id");
 	String content = request.getParameter("content");
 
-	if (writer == null||writer==""||content == null||content=="") {
+	if (writer == null || writer == "" || content == null || content == "") {
 %>
 <script>
 	alert("빠진곳이 있습니다.");
@@ -17,12 +18,13 @@
 	} else {
 		commentDAO dao = new commentDAO();
 		dao.cOrder();
-		dao.commentInsert(bnum, writer, content);
+		int ordering = dao.getCOder(cnum);
+		dao.reCommentInsert(bnum, ordering, writer, content);
 %>
 <script>
 	alert("댓글 작성이 완료되었습니다.")
 </script>
-<jsp:forward page="view.jsp?bnum=<%=bnum %>"></jsp:forward>
+<jsp:forward page="view.jsp?bnum=<%=bnum%>"></jsp:forward>
 <%
 	}
 %>

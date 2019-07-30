@@ -28,6 +28,7 @@ select * from board;
 create table comment(
 cnum int auto_increment primary key,
 bnum int not null,
+corder int not null,
 writer varchar(100) not null,
 content varchar(2000) not null,
 wridate date not null

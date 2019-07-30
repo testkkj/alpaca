@@ -104,7 +104,9 @@
 				<td><%=cview.get(i).getContent()%></td>
 				<td><%=cview.get(i).getWridate()%></td>
 				<td>
-				<a href="commentUpdate.jsp?bnum=<%=num %>&cnum=<%=cview.get(i).getCnum() %>" class="btn btn-outline-secondary btn-sm border-0"
+				<a href="reComment.jsp?bnum=<%=num %>&cnum=<%=cview.get(i).getCnum() %>" class="btn btn-outline-secondary btn-sm border-0"
+			role="button">답글</a>
+			<a href="commentUpdate.jsp?bnum=<%=num %>&cnum=<%=cview.get(i).getCnum() %>" class="btn btn-outline-secondary btn-sm border-0"
 			role="button">수정</a>
 			<a href="commentDeleteAction.jsp?bnum=<%=num %>&cnum=<%=cview.get(i).getCnum() %>" class="btn btn-outline-secondary btn-sm border-0"
 			role="button">삭제</a>
