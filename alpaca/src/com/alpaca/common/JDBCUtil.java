@@ -9,7 +9,7 @@ public class JDBCUtil {
 	public static Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			return DriverManager.getConnection("jdbc:mysql://localhost:3306/alpaca", "root", "1234");
+			return DriverManager.getConnection("jdbc:mysql://localhost:3306/alpaca?characterEncoding=UTF8", "root", "1234");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
