@@ -23,7 +23,7 @@
     <%
 		if (session.getAttribute("id") == null) {
 	%>
-    <div class="container">
+    <div class="container mt-3">
         <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">BOARD</a>
@@ -40,7 +40,7 @@
     <%
 		} else {
 	%>
-    <div class="container">
+    <div class="container mt-3">
         <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">BOARD</a>

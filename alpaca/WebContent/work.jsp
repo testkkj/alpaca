@@ -23,16 +23,16 @@
     <%
 		if (session.getAttribute("id") == null) {
 	%>
-    <div class="container">
+    <div class="container mt-3">
         <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">BOARD</a>
-        <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>
+        <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0 active" role="button">WORK</a>
         <a href="login.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">LOGIN</a>
         <a href="join.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">JOIN</a>
     </div>
     <div class="container mt-5">
-        로그인 하시면 제 작업물이 나옵니다!<br>
+        로그인을 하셔야 둘러보실수 있어요^^.<br>
         <a href="join.jsp" class="btn btn-outline-secondary btn-lg" role="button">JOIN</a><br>
         이미 가입 하셨나요?<br>
         <a href="login.jsp" class="btn btn-outline-secondary btn-lg" role="button">LOGIN</a><br>
@@ -40,11 +40,11 @@
     <%
 		} else {
 	%>
-    <div class="container">
+    <div class="container mt-3">
         <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">BOARD</a>
-        <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>
+        <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0 active" role="button">WORK</a>
         <a href="logout.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">LOGOUT</a>
     </div>
     <div class="container mt-5">

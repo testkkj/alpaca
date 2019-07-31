@@ -47,7 +47,7 @@ public class memberDAO {
 
 	}
 	
-	public void login(String id, String password) {
+	public int login(String id, String password) {
 		System.out.println("jdbc로 login() 기능 처리");
 		String sql = "select id from member where id=? and password=?";
 		try {
@@ -55,7 +55,11 @@ public class memberDAO {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, id);
 			stmt.setString(2, password);
-			stmt.executeQuery();
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				System.out.println("insert() try문 실행");
+				return 1;
+			}
 			System.out.println("insert() try문 실행");
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -63,5 +67,6 @@ public class memberDAO {
 			JDBCUtil.close(stmt, conn);
 			System.out.println("login() finally문 실행");
 		}
+		return 0;
 	}
 }

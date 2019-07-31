@@ -33,7 +33,7 @@ public class boardDAO {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				return rs.getInt(0) + 1;
+				return rs.getInt(1) + 1;
 			}
 			return 1;
 		} catch (Exception e) {

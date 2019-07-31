@@ -29,19 +29,19 @@
 </head>
 
 <body class="bg-dark text-success text-center">
-	<div class="container">
+	<div class="container mt-3">
 		<a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0"
 			role="button">HOME</a> <a href="about.jsp"
 			class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
-		<a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0"
+		<a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0 active"
 			role="button">BOARD</a> <a href="work.jsp"
 			class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>
-		<a href="login.jsp" class="btn btn-outline-secondary btn-lg border-0"
-			role="button">LOGIN</a> <a href="join.jsp"
-			class="btn btn-outline-secondary btn-lg border-0" role="button">JOIN</a>
+		<a href="logout.jsp" class="btn btn-outline-secondary btn-lg border-0"
+			role="button">LOGOUT</a>
 	</div>
 	<%
 		int num = Integer.parseInt(request.getParameter("bnum"));
+		String sid = (String) session.getAttribute("id");
 		boardDAO dao = new boardDAO();
 		dao.getView(num);
 		ArrayList<boardVO> view = dao.boardView(num);
@@ -69,10 +69,16 @@
 			</tr>
 		</table>
 	</div>
+	<%
+		if (sid.equals(view.get(0).getWriter())) {
+	%>
 	<a href="update.jsp?bnum=<%=num%>"
 		class="btn btn-outline-secondary btn-lg border-0" role="button">글수정</a>
 	<a href="deleteAction.jsp?bnum=<%=num%>"
 		class="btn btn-outline-secondary btn-lg border-0" role="button">글삭제</a>
+	<%
+		}
+	%>
 	<div class="container">
 		<form action="commentAction.jsp?bnum=<%=num%>" method="post">
 			<table class="table table-dark table-hover text-success">
@@ -101,15 +107,23 @@
 			%>
 			<tr>
 				<td><%=cview.get(i).getWriter()%></td>
-				<td><%=cview.get(i).getContent()%></td>
-				<td><%=cview.get(i).getWridate()%></td>
-				<td>
-				<a href="reComment.jsp?bnum=<%=num %>&cnum=<%=cview.get(i).getCnum() %>" class="btn btn-outline-secondary btn-sm border-0"
-			role="button">답글</a>
-			<a href="commentUpdate.jsp?bnum=<%=num %>&cnum=<%=cview.get(i).getCnum() %>" class="btn btn-outline-secondary btn-sm border-0"
-			role="button">수정</a>
-			<a href="commentDeleteAction.jsp?bnum=<%=num %>&cnum=<%=cview.get(i).getCnum() %>" class="btn btn-outline-secondary btn-sm border-0"
-			role="button">삭제</a>
+				<td><textarea rows="5" cols="50"
+						class="bg-dark border-0 text-success"><%=cview.get(i).getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+					.replaceAll("\n", "<br>")%></textarea></td>
+				<td><a
+					href="reComment.jsp?bnum=<%=num%>&cnum=<%=cview.get(i).getCnum()%>"
+					class="btn btn-outline-secondary btn-sm border-0" role="button">답글</a>
+					<%
+						if (sid.equals(cview.get(i).getWriter())) {
+					%> <a
+					href="commentUpdate.jsp?bnum=<%=num%>&cnum=<%=cview.get(i).getCnum()%>"
+					class="btn btn-outline-secondary btn-sm border-0" role="button">수정</a>
+					<a
+					href="commentDeleteAction.jsp?bnum=<%=num%>&cnum=<%=cview.get(i).getCnum()%>"
+					class="btn btn-outline-secondary btn-sm border-0" role="button">삭제</a>
+					<%
+						}
+					%>
 				</td>
 			</tr>
 			<%

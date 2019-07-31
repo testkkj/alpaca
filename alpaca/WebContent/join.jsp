@@ -20,13 +20,13 @@
 </head>
 
 <body class="bg-dark text-success text-center">
-    <div class="container">
+    <div class="container mt-3">
         <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">BOARD</a>
         <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>
         <a href="login.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">LOGIN</a>
-        <a href="join.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">JOIN</a>
+        <a href="join.jsp" class="btn btn-outline-secondary btn-lg border-0 active" role="button">JOIN</a>
     </div>
     <div class="container mt-5">
             <form action="joinAction.jsp" method="post">

@@ -23,16 +23,16 @@
     <%
 		if (session.getAttribute("id") == null) {
 	%>
-    <div class="container">
-        <a href="index.jsp" class="btn btn-outline-ssecondary btn-lg border-0" role="button">HOME</a>
+    <div class="container mt-3">
+        <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0 active" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">BOARD</a>
         <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>
         <a href="login.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">LOGIN</a>
         <a href="join.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">JOIN</a>
-    </div>
+        </div>
     <div class="container mt-5">
-        로그인 하시면 페이지 소개글이 나옵니다!<br>
+        로그인을 하셔야 둘러보실수 있어요^^.<br>
         <a href="join.jsp" class="btn btn-outline-secondary btn-lg" role="button">JOIN</a><br>
         이미 가입 하셨나요?<br>
         <a href="login.jsp" class="btn btn-outline-secondary btn-lg" role="button">LOGIN</a><br>
@@ -40,8 +40,8 @@
     <%
 		} else {
 	%>
-    <div class="container">
-        <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">HOME</a>
+    <div class="container mt-3">
+        <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0 active" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">BOARD</a>
         <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>
@@ -49,9 +49,10 @@
     </div>
     <div class="container mt-5">
         간략한 설명~<br>
-        about 페이지에는 저에 대한 소개가 있습니다.<br>
-        board 페이지에는 제가 이 사이트를 만드는 과정을 업로드 할 예정입니다.<br>
-        work 페이지에는 저의 작업물들의 사진과 github링크를 걸어둘 예정입니다.<br>
+        about 페이지에는 자기소개가 있습니다.<br>
+        board 페이지에는 가입하신분이 글을 남기실수 있는 게시판이 있습니다.<br>
+        work 페이지에는 이 페이지의 제작과정과<br>
+         만들것들의 과정 그리고 github링크를 걸어둘 예정입니다.<br>
     </div>
     <%
 		}
