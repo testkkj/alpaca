@@ -35,19 +35,62 @@
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">BOARD</a>
         <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>       
-  		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    	Dropdown button
+  		<button class="btn btn-outline-secondary btn-lg border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    	MY PAGE
   		</button>
   		<div class="dropdown-menu btn btn-outline-secondary btn-lg boarder-0" aria-labelledby="dropdownMenuButton">
-    	<a href="logout.jsp" class="btn btn-outline-secondary btn-lg border-0 btn-block" role="button">LOGOUT</a>
-</div>
+    	<a href="logout.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">LOGOUT</a>
+		</div>
     </div>
     <div class="container mt-5">
-        간략한 설명~<br>
-        about 페이지에는 자기소개가 있습니다.<br>
-        board 페이지에는 가입하신분이 글을 남기실수 있는 게시판이 있습니다.<br>
-        work 페이지에는 이 페이지의 제작과정과<br>
-         만들것들의 과정 그리고 github링크를 걸어둘 예정입니다.<br>
+    <p class="text-success">
+    방문을 환영합니다.<br>
+    JSP를 이용하여 만든 개인 포트폴리오 사이트 입니다.<br>
+    화려하고 잘만든건 아니지만 기본기를 익히고<br>
+    더욱 탄탄하게 만들기위해 제작중입니다.<br>
+    슬라이드 쇼의 사진은 각 해당 페이지로의 링크 입니다.<br>
+    </p>
+    <div id="slide" class="carousel slide" data-ride="carousel">
+  <ul class="carousel-indicators">
+    <li data-target="#slide" data-slide-to="0" class="active"></li>
+    <li data-target="#slide" data-slide-to="1"></li>
+    <li data-target="#slide" data-slide-to="2"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="5000">
+      <a href="about.jsp"><img src="about.jpg" alt="link to about page" class="w-25"></a>
+      <div class="carousel-caption">
+    <h3>ABOUT</h3>
+    <p>자기소개 페이지로 이동</p>
+  </div>
+    </div>
+    <div class="carousel-item" data-interval="5000">
+      <a href="board.jsp"><img src="board.jpg" alt="link to board page" class="w-25"></a>
+      <div class="carousel-caption">
+    <h3>BOARD</h3>
+    <p>게시판 페이지로 이동</p>
+  </div>
+    </div>
+    <div class="carousel-item" data-interval="5000">
+      <a href="work.jsp"><img src="work.jpg" alt="link to work page" class="w-25"></a>
+      <div class="carousel-caption">
+    <h3>WORK</h3>
+    <p>제작물 페이지로 이동</p>
+  </div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#slide" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#slide" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
     </div>
     <%
 		}

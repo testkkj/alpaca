@@ -13,8 +13,9 @@ public class boardDAO {
 	private ResultSet rs = null;
 
 	public String getDate() {
-		String SQL = "select now()";
+		String SQL = "select sysdate()";
 		try {
+			conn = JDBCUtil.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
