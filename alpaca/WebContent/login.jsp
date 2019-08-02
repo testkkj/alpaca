@@ -27,7 +27,7 @@
                     <label for="password" class="col-2">비밀번호</label><br><input type="password" name="password" id="password" class="form-control-lg col-4">
                 </div>
                 <br>
-                    <button type="submit" class="btn btn-success">로그인</button>
+                    <button type="submit" class="btn btn-success btn-lg">로그인</button>
             </form>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
