@@ -69,4 +69,41 @@ public class memberDAO {
 		}
 		return 0;
 	}
+	
+	public String idFind(String email) {
+		System.out.println("jdbc로 idFind() 기능 처리");
+		String sql = "select id from member where email=?";
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, email);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				System.out.println("idFind() try문 실행");
+				return rs.getString(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "";		
+	}
+	
+	public String pwFind(String email, String id) {
+		System.out.println("jdbc로 pwFind() 기능 처리");
+		String sql = "select password from member where email=? and id=?";
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, email);
+			stmt.setString(2, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				System.out.println("pwFind() try문 실행");
+				return rs.getString(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "";		
+	}
 }

@@ -17,6 +17,12 @@
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
     <title>알파카</title>
+    <style type="text/css">
+    body{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 20px;
+    }
+    </style>
 </head>
 
 <body class="bg-dark text-success text-center">

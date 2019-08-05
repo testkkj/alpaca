@@ -1,4 +1,3 @@
-<%@page import="com.alpaca.member.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,6 +10,7 @@
     <style type="text/css">
     body{
     font-family: 'Nanum Gothic', sans-serif;
+    font-size: 20px;
     }
     </style>
     <title>알파카</title>
@@ -18,16 +18,26 @@
 
 <body class="bg-dark text-success text-center">
     <%
-    memberVO vo = new memberVO();
 		if (session.getAttribute("id") == null) {
 	%>
     <div class="container mt-3">
+    <div class="row">
         <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0 active" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">BOARD</a>
         <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>
-        <a href="login.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">LOGIN</a>
-        <a href="join.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">JOIN</a>
+         <div class="dropdown ml-auto">
+  		<button type="button" class="btn btn-outline-secondary btn-lg border-0 dropdown-toggle" data-toggle="dropdown">
+    	MENU
+  		</button>
+  		<div class="dropdown-menu">
+    	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="login.jsp">LOGIN</a>
+    	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="join.jsp">JOIN</a>
+    	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="idFind.jsp">ID찾기</a>
+    	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="pwFind.jsp">PW찾기</a>
+  		</div>
+		</div>
+        </div>
         </div>
     <div class="container mt-5">
         로그인을 하셔야 둘러보실수 있어요^^.<br>
@@ -39,66 +49,43 @@
 		} else {
 	%>
     <div class="container mt-3">
+    <div class="row">
         <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0 active" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">BOARD</a>
         <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>       
-  		<button class="btn btn-outline-secondary btn-lg border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    	MY PAGE
+  		<div class="dropdown ml-auto">
+  		<button type="button" class="btn btn-outline-secondary btn-lg border-0 dropdown-toggle" data-toggle="dropdown">
+    	MENU
   		</button>
-  		<div class="dropdown-menu btn btn-outline-secondary btn-lg boarder-0" aria-labelledby="dropdownMenuButton">
-    	<a href="logout.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">LOGOUT</a>
+  		<div class="dropdown-menu">
+    	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="logout.jsp">LOGOUT</a>
+  		</div>
+		</div>
 		</div>
     </div>
     <div class="container mt-5">
-    <p class="text-success">
+    <div class="row">
+    <div class="col">
+    <a href="about.jsp"><img alt="link to about" src="about.jpg" style="width:300px;height:200px;"></a>
+    <h1>ABOUT</h1>
+    </div>
+    <div class="col">
+    <a href="board.jsp"><img alt="link to board" src="board.jpg" style="width:300px;height:200px;"></a>
+    <h1>BOARD</h1>
+    </div>
+    <div class="col">
+    <a href="work.jsp"><img alt="link to work" src="work.jpg" style="width:300px;height:200px;"></a>
+    <h1>WORK</h1>
+    </div>
+    </div>
+    <p class="text-success mt-5">
     방문을 환영합니다.<br>
     JSP를 이용하여 만든 개인 포트폴리오 사이트 입니다.<br>
     화려하고 잘만든건 아니지만 기본기를 익히고<br>
     더욱 탄탄하게 만들기위해 제작중입니다.<br>
-    슬라이드 쇼의 사진은 각 해당 페이지로의 링크 입니다.<br>
+    사진은 각 해당 페이지로의 링크 입니다.<br>
     </p>
-    <div id="slide" class="carousel slide" data-ride="carousel">
-  <ul class="carousel-indicators">
-    <li data-target="#slide" data-slide-to="0" class="active"></li>
-    <li data-target="#slide" data-slide-to="1"></li>
-    <li data-target="#slide" data-slide-to="2"></li>
-  </ul>
-
-  <!-- The slideshow -->
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-interval="5000">
-      <a href="about.jsp"><img src="about.jpg" alt="link to about page" class="w-25"></a>
-      <div class="carousel-caption">
-    <h3>ABOUT</h3>
-    <p>자기소개 페이지로 이동</p>
-  </div>
-    </div>
-    <div class="carousel-item" data-interval="5000">
-      <a href="board.jsp"><img src="board.jpg" alt="link to board page" class="w-25"></a>
-      <div class="carousel-caption">
-    <h3>BOARD</h3>
-    <p>게시판 페이지로 이동</p>
-  </div>
-    </div>
-    <div class="carousel-item" data-interval="5000">
-      <a href="work.jsp"><img src="work.jpg" alt="link to work page" class="w-25"></a>
-      <div class="carousel-caption">
-    <h3>WORK</h3>
-    <p>제작물 페이지로 이동</p>
-  </div>
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#slide" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#slide" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-
-</div>
     </div>
     <%
 		}

@@ -13,6 +13,7 @@
     <style type="text/css">
     body{
     font-family: 'Nanum Gothic', sans-serif;
+    font-size: 20px;
     }
     </style>
     <title>알파카</title>
@@ -23,12 +24,25 @@
 		if (session.getAttribute("id") == null) {
 	%>
     <div class="container mt-3">
+    <div class="row">
         <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0 active" role="button">BOARD</a>
         <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>
-        <a href="login.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">LOGIN</a>
-        <a href="join.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">JOIN</a>
+        <div class="dropdown ml-auto">
+  		<button type="button" class="btn btn-outline-secondary btn-lg border-0 dropdown-toggle" data-toggle="dropdown">
+    	MENU
+  		</button>
+  		<div class="dropdown-menu">
+    	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="login.jsp">LOGIN</a>
+    	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="join.jsp">JOIN</a>
+    	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="idFind.jsp">ID찾기</a>
+    	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="pwFind.jsp">PW찾기</a>
+  		</div>
+		</div>
+        </div>
+        </div>
+    </div>
     </div>
     <div class="container mt-5">
         로그인을 하셔야 둘러보실수 있어요^^.<br>
@@ -41,11 +55,20 @@
 		} else {
 	%>
     <div class="container mt-3">
+    <div class="row">
         <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0 active" role="button">BOARD</a>
-        <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>
-        <a href="logout.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">LOGOUT</a>
+        <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>       
+  		<div class="dropdown ml-auto">
+  		<button type="button" class="btn btn-outline-secondary btn-lg border-0 dropdown-toggle" data-toggle="dropdown">
+    	MENU
+  		</button>
+  		<div class="dropdown-menu">
+    	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="logout.jsp">LOGOUT</a>
+  		</div>
+		</div>
+		</div>
     </div>
     <div class="container mt-5">
         <table class="table table-dark table-hover text-success">
