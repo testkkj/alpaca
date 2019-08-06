@@ -67,7 +67,9 @@
 		</div>
     </div>
     <div class="container mt-5">
-        
+      <div class="list-group">
+  <a href="pageMake.jsp" class="list-group-item list-group-item-action bg-secondary">게시판 제작과정 1</a>
+</div> 
     </div>
     <%
 		}

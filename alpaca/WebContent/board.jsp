@@ -42,8 +42,6 @@
 		</div>
         </div>
         </div>
-    </div>
-    </div>
     <div class="container mt-5">
         로그인을 하셔야 둘러보실수 있어요^^.<br>
         <a href="join.jsp" class="btn btn-outline-secondary btn-lg" role="button">JOIN</a>
@@ -142,7 +140,7 @@
 		<a href="board.jsp?pnum=<%=pagenum - 1%>" class="btn btn-success btn-lg" role="button">이전</a>
 		<%
 			}
-				if (pagenum == 1 && pagenum != totalpagenumber&&vo.size()>5) {
+				if (pagenum == 1 && pagenum != totalpagenumber) {
 		%>
 		<a href="board.jsp?pnum=<%=pagenum + 1%>" class="btn btn-success btn-lg" role="button">다음</a>
 		<%
