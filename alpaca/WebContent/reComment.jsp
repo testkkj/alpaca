@@ -21,11 +21,20 @@
 
 <body class="bg-dark text-success text-center">
     <div class="container mt-3">
-        <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">HOME</a>
+    <div class="row">
+        <a href="index.jsp" class="btn btn-outline-secondary btn-lg border-0 active" role="button">HOME</a>
         <a href="about.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">ABOUT</a>
         <a href="board.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">BOARD</a>
-        <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>
-        <a href="logout.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">LOGOUT</a>
+        <a href="work.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">WORK</a>       
+  		<div class="dropdown ml-auto">
+  		<button type="button" class="btn btn-outline-secondary btn-lg border-0 dropdown-toggle" data-toggle="dropdown">
+    	MENU
+  		</button>
+  		<div class="dropdown-menu">
+    	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="logout.jsp">LOGOUT</a>
+  		</div>
+		</div>
+		</div>
     </div>
     <div class="container mt-5">
     <%

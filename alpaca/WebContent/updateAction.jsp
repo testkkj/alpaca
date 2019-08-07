@@ -10,7 +10,7 @@
 
 	int num = Integer.parseInt(request.getParameter("bnum"));
 
-	if (title == null || title == "" || writer == null || writer == "" || content == null || content == "") {
+	if (title == null || title == "" || content == null || content == "") {
 %>
 <script>
 	alert("빠진곳이 있습니다.");
