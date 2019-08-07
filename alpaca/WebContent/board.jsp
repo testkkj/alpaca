@@ -140,7 +140,7 @@
 		<a href="board.jsp?pnum=<%=pagenum - 1%>" class="btn btn-success btn-lg" role="button">이전</a>
 		<%
 			}
-				if (pagenum == 1 && pagenum != totalpagenumber) {
+				if (pagenum == 1 || pagenum != 1 && pagenum != totalpagenumber) {
 		%>
 		<a href="board.jsp?pnum=<%=pagenum + 1%>" class="btn btn-success btn-lg" role="button">다음</a>
 		<%

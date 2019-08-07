@@ -119,9 +119,8 @@
 			%>
 			<tr>
 				<td><%=cview.get(i).getWriter()%></td>
-				<td><textarea rows="5" cols="50"
-						class="bg-dark border-0 text-success"><%=cview.get(i).getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
-					.replaceAll("\n", "<br>")%></textarea></td>
+				<td><textarea rows="5" cols="50" readonly
+						class="bg-dark border-0 text-success"><%=cview.get(i).getContent()%></textarea></td>
 				<td><a
 					href="reComment.jsp?bnum=<%=num%>&cnum=<%=cview.get(i).getCnum()%>"
 					class="btn btn-outline-secondary btn-sm border-0" role="button">답글</a>
