@@ -54,7 +54,7 @@
         <a href="logout.jsp" class="btn btn-outline-secondary btn-lg border-0" role="button">LOGOUT</a>
     </div>
     <div class="container mt-5">
-    <form action="writeAction.jsp" method="post">
+    <form action="writeAction.jsp" method="post" enctype="multipart/form-data">
     
     
     
@@ -69,6 +69,12 @@
                 <td>글내용</td>
                 <td><div class="form-group">
         <textarea name="content" id="content" cols="50" rows="12" class="bg-dark text-success border-0"></textarea>
+    </div></td>
+            </tr>
+            <tr>
+                <td>업로드</td>
+                <td><div class="form-group">
+        <input type="file" name="file" id="file" class="bg-dark text-success border-0">
     </div></td>
             </tr>
         </table>

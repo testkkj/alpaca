@@ -38,4 +38,13 @@ desc comment;
 
 select * from comment;
 
-select content from comment where bnum = 15 and cnum = 2;
+create table file(
+fnum int auto_increment primary key,
+bnum int not null,
+orifile varchar(100) not null,
+chafile varchar(100) not null
+);
+
+desc file;
+
+select * from file;

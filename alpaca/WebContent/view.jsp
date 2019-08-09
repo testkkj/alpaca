@@ -1,3 +1,4 @@
+<%@page import="com.alpaca.file.fileDAO"%>
 <%@page import="com.alpaca.board.boardVO"%>
 <%@page import="com.alpaca.board.boardDAO"%>
 <%@page import="com.alpaca.comment.commentVO"%>
@@ -54,6 +55,9 @@
 	<%
 		int num = Integer.parseInt(request.getParameter("bnum"));
 		String sid = (String) session.getAttribute("id");
+		fileDAO fdao = new fileDAO();
+		String folder = "C:/Spring/eclipse-jee-2019-06-R-win32-x86_64/work/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/alpaca/image";
+		String name = fdao.getFname(num);
 		boardDAO dao = new boardDAO();
 		dao.getView(num);
 		ArrayList<boardVO> view = dao.boardView(num);
@@ -78,6 +82,22 @@
 				<td><textarea rows="12" cols="50" readonly
 						class="bg-dark border-0 text-success"><%=view.get(0).getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
 					.replaceAll("\n", "<br>")%></textarea></td>
+			</tr>
+			<tr>
+				<td>업로드</td>
+				<td>
+				<%
+				if(name==""){
+					%>
+					파일이 없습니다.
+					<%
+				}else{
+					%>
+					<img src="<%=folder %>/<%=name %>" alt="" style="width:200px;height:200px;">
+					<%
+				}
+				%>
+				</td>
 			</tr>
 		</table>
 	</div>
