@@ -1,3 +1,6 @@
+<%@page import="com.alpaca.member.memberVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.alpaca.member.memberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -59,6 +62,7 @@
     	MENU
   		</button>
   		<div class="dropdown-menu">
+  		<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="myPage.jsp">MYPAGE</a>
     	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="logout.jsp">LOGOUT</a>
   		</div>
 		</div>
@@ -85,6 +89,7 @@
     화려하고 잘만든건 아니지만 기본기를 익히고<br>
     더욱 탄탄하게 만들기위해 제작중입니다.<br>
     사진은 각 해당 페이지로의 링크 입니다.<br>
+    <a href="test.jsp">본 페이지에 아직 적용되지 않은 것들</a>
     </p>
     <p class="col-md-8 offset-md-2">
     글꼴 사용 : 구글 폰트 나눔 고딕(open font license)입니다.<br>

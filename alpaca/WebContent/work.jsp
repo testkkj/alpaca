@@ -61,6 +61,7 @@
     	MENU
   		</button>
   		<div class="dropdown-menu">
+  		<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="myPage.jsp">MYPAGE</a>
     	<a class="dropdown-item btn btn-outline-secondary btn-lg boarder-0" href="logout.jsp">LOGOUT</a>
   		</div>
 		</div>
